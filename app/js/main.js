@@ -1,5 +1,6 @@
 var app = angular.module('swapiWebApp', [
-  'ngRoute'
+  'ngRoute',
+  'ngMaterial',
 ]);
 
 app.config(['$routeProvider', function ($routeProvider) {
@@ -30,10 +31,10 @@ app.controller('SwapiPageCtrl', function ($scope, $location, $http) {
       var self = this;
       
       return $http.get(swapiUrl + 'people/').then(function (response) {
-        self.profile = response.data
+        self.profile = response.data;
         return response;
       });
     };
     return SwapiPeople;
-  })
+  });
 });
