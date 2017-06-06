@@ -1,2 +1,2 @@
 # swapi-helper
-A helper library for interact with swapi api
+A helper library for interact with SWAPI API. More info on the SWAPI API at www.swapi.co.
