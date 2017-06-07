@@ -1,0 +1,54 @@
+{
+  "name": "ok",
+  "version": "1.0.0",
+  "description": "A helper library for interact with SWAPI API. More info on the SWAPI API at www.swapi.co.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-material": "^1.1.4",
+    "angular-route": "^1.6.4",
+    "bootstrap": "^3.3.7",
+    "browserify-ngannotate": "^2.0.0",
+    "del": "^2.2.2",
+    "flexboxgrid": "^6.3.1",
+    "gulp-cachebust": "^0.0.6",
+    "gulp-concat": "^2.6.1",
+    "gulp-inject": "^4.2.0",
+    "gulp-install": "^1.1.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-ng-html2js": "^0.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-rimraf": "^0.2.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-webserver": "^0.9.1",
+    "gulp-zip": "^4.0.0",
+    "gulp.spritesmith": "^6.5.0",
+    "jshint": "^2.9.4",
+    "karma": "^1.7.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "angular-animate": "^1.6.4",
+    "angular-aria": "^1.6.4",
+    "browser-sync": "^2.18.12",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-cache": "^0.4.6",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-include": "^2.3.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-useref": "^3.1.2",
+    "run-sequence": "^1.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.azc.ext.hp.com:rodrigo-dalmas/swapi-helper.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

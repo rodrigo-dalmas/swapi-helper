@@ -1,17 +1,17 @@
 
-<div id="swapiPage">
-    <div>
+<div id="swapiPage" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="row">
         <h1>Hello and welcome to the Swapi Helper!</h1>
         <h2>Please use the page below to select between people, planets or starships from Star War movies! </h2>
     </div>
-    <div id="typeCombo">
+    <div id="typeCombo" class="row">
         <md-select ng-model="type" placeholder="Please select a type" class="md-no-underline">
             <md-option value="people">People</md-option>
             <md-option value="planet">Planet</md-option>
             <md-option value="starship">Starship</md-option>
         </md-select>
     </div>
-    <div id="resultBox">
+    <div id="resultBox" class="row">
         <md-card>
             <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
             <md-card-title>

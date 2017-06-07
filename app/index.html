@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<head>
+<html ng-app="swapiWebApp">
+<head xmlns="http://www.w3.org/1999/html">
     <!-- Meta-Information -->
     <title>Swapi Web Page</title>
     <meta charset="utf-8">
@@ -7,18 +8,21 @@
     <meta name="description" content="Swapi Web Page">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+
     <!-- Vendor Bootstrap Stylesheets -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Our Website CSS Styles -->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.min.css"/>
-    <link rel="stylesheet" type="text/css" href="node_modules/flexboxgrid/dist/flexboxgrid.min.css"/>
+    <link rel="stylesheet" href="css/angular-material.min.css">
+    <link rel="stylesheet" href="css/flexboxgrid.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
 
 </head>
-<body ng-app="swapiWebApp">
+<body>
 
 <!-- Website Content Goes Here -->
 <div ng-include='"templates/header.html"'></div>
@@ -26,10 +30,7 @@
 <div ng-include='"templates/footer.html"'></div>
 
 <!-- Vendor Angular followed by custom js-->
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.min.js"></script>
-
-<!-- Our Website js -->
+<script src="js/vendor.js"></script>
 <script src="js/main.js"></script>
 
 </body>

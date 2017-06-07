@@ -1,187 +1,125 @@
 var gulp = require('gulp'),
-  webserver = require('gulp-webserver'),
-  del = require('del'),
-  sass = require('gulp-sass'),
-  karma = require('karma'),
-  jshint = require('gulp-jshint'),
-  spritesmith = require('gulp.spritesmith'),
-  browserify = require('browserify'),
-  source = require('vinyl-source-stream'),
-  buffer = require('vinyl-buffer'),
-  uglify = require('gulp-uglify'),
-  gutil = require('gulp-util'),
-  ngAnnotate = require('browserify-ngannotate');
-
-var CacheBuster = require('gulp-cachebust');
-var cachebust = new CacheBuster();
+    sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    sourcemaps = require('gulp-sourcemaps'),
+    browserSync = require('browser-sync'),
+    useref = require('gulp-useref'),
+    uglify = require('gulp-uglify'),
+    gulpIf = require('gulp-if'),
+    cssnano = require('gulp-cssnano'),
+    imagemin = require('gulp-imagemin'),
+    cache = require('gulp-cache'),
+    del = require('del'),
+    runSequence = require('run-sequence'),
+    inject = require('gulp-inject'),
+    browserify = require('browserify'),
+    CacheBuster = require('gulp-cachebust'),
+    cachebust = new CacheBuster(),
+    buffer = require('vinyl-buffer'),
+    source = require('vinyl-source-stream'),
+    spritesmith = require('gulp.spritesmith'),
+    include = require('gulp-include');
+    concat = require('gulp-concat');
 
 /////////////////////////////////////////////////////////////////////////////////////
 //
-// cleans the build output
+// Development Tasks
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
-gulp.task('clean', function (cb) {
-  del([
-    'dist/*'
-  ], cb);
+gulp.task('browserSync', function() {
+  browserSync({
+    server: {
+      baseDir: './dist'
+    }
+  })
+})
+
+gulp.task('vendor-css', function () {
+  gulp.src([
+      "./node_modules/angular-material/angular-material.min.css",
+      "./node_modules/flexboxgrid/dist/flexboxgrid.min.css",
+      "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+      "./node_modules/bootstrap/dist/css/bootstrap-theme.min.css"])
+    .on('error', console.log)
+    .pipe(gulp.dest("dist/css"));
 });
 
-/////////////////////////////////////////////////////////////////////////////////////
-//
-// runs bower to install frontend dependencies
-//
-/////////////////////////////////////////////////////////////////////////////////////
-
-gulp.task('bower', function() {
-  
-  var install = require("gulp-install");
-  
-  return gulp.src(['./bower.json'])
-    .pipe(install());
+gulp.task('build-vendor-js', function() {
+  gulp.src(["./node_modules/angular/angular.min.js",
+      "./node_modules/angular-route/angular-route.min.js"])
+    .on('error', console.log)
+    .pipe(concat('vendor.js'))
+    .pipe(gulp.dest("dist/js"));
 });
 
-/////////////////////////////////////////////////////////////////////////////////////
-//
-// runs sass, creates css source maps
-//
-/////////////////////////////////////////////////////////////////////////////////////
-
-gulp.task('build-css', function() {
-  return gulp.src('./app/css/*')
-    .pipe(sass())
-    .pipe(cachebust.resources())
-    .pipe(gulp.dest('./dist/css'));
+gulp.task('build-main-js', function() {
+  gulp.src("./app/js/main.js")
+    .on('error', console.log)
+    .pipe(gulp.dest("dist/js"));
 });
 
-/////////////////////////////////////////////////////////////////////////////////////
-//
-// fills in the Angular template cache, to prevent loading the html templates via
-// separate http requests
-//
-/////////////////////////////////////////////////////////////////////////////////////
+gulp.task('build-index', function() {
+  gulp.src(["./app/index.html"])
+    .on('error', console.log)
+    .pipe(gulp.dest("dist"));
+});
 
-gulp.task('build-template-cache', function() {
-  
-  var ngHtml2Js = require("gulp-ng-html2js"),
-    concat = require("gulp-concat");
-  
+gulp.task('sass', function() {
+  return gulp.src('./app/scss/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./app/css'))
+    .pipe(gulp.dest('./dist/css'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
+})
+
+gulp.task('build-template', function() {
+  return gulp.src("./app/templates/*.html")
+    .pipe(gulp.dest("./dist/templates"));
+});
+
+gulp.task('build-partials', function() {
   return gulp.src("./app/partials/*.html")
     .pipe(gulp.dest("./dist/partials"));
 });
 
-/////////////////////////////////////////////////////////////////////////////////////
-//
-// runs jshint
-//
-/////////////////////////////////////////////////////////////////////////////////////
-
-gulp.task('jshint', function() {
-  gulp.src('./app/js/*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
-});
+gulp.task('watch', function() {
+  gulp.watch('./dist/scss/**/*.scss', ['sass']);
+  gulp.watch('./dist/*.html', browserSync.reload);
+  gulp.watch('./dist/partials/*.html', browserSync.reload);
+  gulp.watch('./dist/templates/*.html', browserSync.reload);
+  gulp.watch('./dist/js/**/*.js', browserSync.reload);
+})
 
 /////////////////////////////////////////////////////////////////////////////////////
 //
-// runs karma tests
+// Optimization Tasks
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
-gulp.task('test', ['build-js'], function() {
-  var testFiles = [
-    './test/unit/*.js'
-  ];
+// Optimizing CSS and JavaScript
+gulp.task('useref', function() {
   
-  return gulp.src(testFiles)
-    .pipe(karma({
-      configFile: 'karma.conf.js',
-      action: 'run'
-    }))
-    .on('error', function(err) {
-      console.log('karma tests failed: ' + err);
-      throw err;
-    });
-});
-
-/////////////////////////////////////////////////////////////////////////////////////
-//
-// Build a minified Javascript bundle - the order of the js files is determined
-// by browserify
-//
-/////////////////////////////////////////////////////////////////////////////////////
-
-gulp.task('build-js', function() {
-  var b = browserify({
-    entries: './app/js/main.js',
-    debug: true,
-    paths: ['./app/controllers', './app/services', './app/directives'],
-    transform: [ngAnnotate]
-  });
-  
-  return b.bundle()
-    .pipe(source('bundle.js'))
-    .pipe(buffer())
-    .pipe(cachebust.resources())
-    .pipe(uglify())
-    .on('error', gutil.log)
-    .pipe(gulp.dest('./dist/js/'));
-});
-
-/////////////////////////////////////////////////////////////////////////////////////
-//
-// full build (except sprites), applies cache busting to the main page css and js bundles
-//
-/////////////////////////////////////////////////////////////////////////////////////
-
-gulp.task('build', ['bower','build-css','build-template-cache', 'jshint', 'build-js'], function() {
-  return gulp.src('./app/index.html')
-    .pipe(cachebust.references())
+  return gulp.src('./app/*.html')
+    .pipe(useref())
+    .pipe(gulpIf('./app/css/*.css', cssnano()))
     .pipe(gulp.dest('./dist'));
 });
 
-/////////////////////////////////////////////////////////////////////////////////////
-//
-// watches file system and triggers a build when a modification is detected
-//
-/////////////////////////////////////////////////////////////////////////////////////
-
-gulp.task('watch', function() {
-  return gulp.watch(['./app/index.html','./app/partials/*.html', './app/css/*.*css',
-    './app/js/**/*.js'], ['build']);
+// Optimizing Images
+gulp.task('images', function() {
+  return gulp.src('./app/src/img/*.+(png|jpg|jpeg|gif|svg)')
+    // Caching images that ran through imagemin
+    .pipe(cache(imagemin({
+      interlaced: true,
+    })))
+    .pipe(gulp.dest('./dist/images'))
 });
 
-/////////////////////////////////////////////////////////////////////////////////////
-//
-// launches a web server that serves files in the current directory
-//
-/////////////////////////////////////////////////////////////////////////////////////
-
-gulp.task('webserver', ['watch','build'], function() {
-  gulp.src('dist')
-    .pipe(webserver({
-      livereload: false,
-      fallback: './dist/index.html'
-    }));
-});
-
-/////////////////////////////////////////////////////////////////////////////////////
-//
-// launch a build upon modification and publish it to a running server
-//
-/////////////////////////////////////////////////////////////////////////////////////
-
-gulp.task('dev', ['watch', 'webserver']);
-
-/////////////////////////////////////////////////////////////////////////////////////
-//
-// generates a sprite png and the corresponding sass sprite map.
-// This is not included in the recurring development build and needs to be run separately
-//
-/////////////////////////////////////////////////////////////////////////////////////
-
+//Generating Sprites
 gulp.task('sprite', function () {
-  
   var spriteData = gulp.src('./app/src/img/*.png')
     .pipe(spritesmith({
       imgName: 'todo-sprite.png',
@@ -194,10 +132,44 @@ gulp.task('sprite', function () {
   spriteData.img.pipe(gulp.dest('./dist'))
 });
 
+//Copying favicon
+gulp.task('favicon', function() {
+  return gulp.src('*.ico')
+    .pipe(gulp.dest('./dist'))
+})
+
+// Copying fonts 
+gulp.task('fonts', function() {
+  return gulp.src('./app/fonts/**/*')
+    .pipe(gulp.dest('./dist/fonts'))
+})
+
+// Cleaning 
+gulp.task('clean', function (cb) {
+  del([
+    'dist/*'
+  ], cb);
+});
+
 /////////////////////////////////////////////////////////////////////////////////////
 //
-// installs and builds everything, including sprites
+// Build Sequences
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
-gulp.task('default', ['sprite','build', 'test']);
+gulp.task('default', function(callback) {
+  runSequence(['clean','sass', 'vendor-css', 'build-index',
+    'build-main-js', 'build-vendor-js', 'build-template',
+    'build-partials', 'sprite', 'favicon', 'browserSync'], 'watch',
+    callback
+  )
+})
+
+gulp.task('build', function(callback) {
+  runSequence(
+    'clean',
+    'sass',
+    ['useref', 'images', 'fonts', 'favicon'],
+    callback
+  )
+})
