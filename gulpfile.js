@@ -46,8 +46,11 @@ gulp.task('vendor-css', function () {
 });
 
 gulp.task('build-vendor-js', function() {
-  gulp.src(["./node_modules/angular/angular.min.js",
-      "./node_modules/angular-route/angular-route.min.js"])
+  gulp.src([
+    "./node_modules/angular/angular.min.js",
+    "./node_modules/angular-ui-router/release/angular-ui-router.min.js",
+    "./node_modules/underscore/underscore.min.js",
+    "./node_modules/restangular/dist/restangular.js",])
     .on('error', console.log)
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest("dist/js"));

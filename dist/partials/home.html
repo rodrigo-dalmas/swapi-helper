@@ -1,5 +1,5 @@
 
-<div id="swapiPage" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div id="swapiPage" ng-controller="homeController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="row">
         <h1>Hello and welcome to the Swapi Helper!</h1>
         <h2>Please use the page below to select between people, planets or starships from Star War movies! </h2>
@@ -10,33 +10,5 @@
             <md-option value="planet">Planet</md-option>
             <md-option value="starship">Starship</md-option>
         </md-select>
-    </div>
-    <div id="resultBox" class="row">
-        <md-card>
-            <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">Action buttons</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                <p>
-                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-                    two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-                </p>
-                <p>
-                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-                    two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-                </p>
-                <p>
-                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-                    two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-                </p>
-            </md-card-content>
-            <md-card-actions layout="row" layout-align="end center">
-                <md-button>Action 1</md-button>
-                <md-button>Action 2</md-button>
-            </md-card-actions>
-        </md-card>
     </div>
 </div>
