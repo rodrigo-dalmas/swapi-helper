@@ -1,6 +1,6 @@
 var app = angular.module('swapiWebApp');
 
-app.controller('home', ['$scope', 'SwapiService', function($scope, SwapiService) {
+app.controller('home', function($scope, SwapiService) {
   
   $scope.getItemList = function(item) {
     switch(item) {
@@ -24,5 +24,4 @@ app.controller('home', ['$scope', 'SwapiService', function($scope, SwapiService)
         break;
     }
   }
-
-}]);
+});

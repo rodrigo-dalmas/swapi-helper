@@ -2,30 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62fe4a49-6437-4719-a16a-be3d770c3f08" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/home.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/swapi.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/main-controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/js/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/vendor.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/controllers/about-controller.js" afterPath="$PROJECT_DIR$/app/controllers/about.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/controllers/log-controller.js" afterPath="$PROJECT_DIR$/app/controllers/log.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/main.css" afterPath="$PROJECT_DIR$/app/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/about.html" afterPath="$PROJECT_DIR$/app/partials/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/home.html" afterPath="$PROJECT_DIR$/app/partials/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/log.html" afterPath="$PROJECT_DIR$/app/partials/log.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scss/main.scss" afterPath="$PROJECT_DIR$/app/scss/main.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/header.html" afterPath="$PROJECT_DIR$/app/templates/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/css/main.css" afterPath="$PROJECT_DIR$/dist/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/partials/about.html" afterPath="$PROJECT_DIR$/dist/partials/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/partials/home.html" afterPath="$PROJECT_DIR$/dist/partials/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/partials/log.html" afterPath="$PROJECT_DIR$/dist/partials/log.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/templates/header.html" afterPath="$PROJECT_DIR$/dist/templates/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home.js" afterPath="$PROJECT_DIR$/app/controllers/home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services/swapi.js" afterPath="$PROJECT_DIR$/app/services/swapi.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/controllers/home.js" afterPath="$PROJECT_DIR$/dist/controllers/home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/services/swapi.js" afterPath="$PROJECT_DIR$/dist/services/swapi.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -80,31 +61,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="swapi.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="swapi.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/services/swapi.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+            <state relative-caret-position="231">
+              <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auth.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../cds/content/app/auth/server/controllers/auth.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/home.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="567">
-              <caret line="27" column="2" lean-forward="false" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -209,8 +180,8 @@
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/controllers/log.js" />
         <option value="$PROJECT_DIR$/app/controllers/about.js" />
-        <option value="$PROJECT_DIR$/app/services/swapi.js" />
         <option value="$PROJECT_DIR$/app/controllers/home.js" />
+        <option value="$PROJECT_DIR$/app/services/swapi.js" />
       </list>
     </option>
   </component>
@@ -536,12 +507,12 @@
       <workItem from="1496772181812" duration="39863000" />
       <workItem from="1496885905005" duration="645000" />
       <workItem from="1496965333653" duration="87000" />
-      <workItem from="1496965480306" duration="29363000" />
+      <workItem from="1496965480306" duration="30929000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80578000" />
+    <option name="totallyTimeSpent" value="82144000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -897,18 +868,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../cds/content/app/auth/server/controllers/auth.controller.js">
+    <entry file="file://$PROJECT_DIR$/app/controllers/log.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/services/swapi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+        <state relative-caret-position="42">
+          <caret line="2" column="3" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -921,10 +884,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/log.js">
+    <entry file="file://$PROJECT_DIR$/../../cds/content/app/auth/server/controllers/auth.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="3" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+        <state relative-caret-position="210">
+          <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -932,7 +895,15 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
-          <caret line="27" column="2" lean-forward="false" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/services/swapi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
           <folding />
         </state>
       </provider>
