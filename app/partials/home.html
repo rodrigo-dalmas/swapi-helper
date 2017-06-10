@@ -1,14 +1,19 @@
-
-<div id="swapiPage" ng-controller="homeController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div id="swapiPage" ng-controller="home" class="base-margin col-xs-12 col-sm-12 col-md-12 col-lg-12'">
     <div class="row">
         <h1>Hello and welcome to the Swapi Helper!</h1>
         <h2>Please use the page below to select between people, planets or starships from Star War movies! </h2>
     </div>
     <div id="typeCombo" class="row">
-        <md-select ng-model="type" placeholder="Please select a type" class="md-no-underline">
-            <md-option value="people">People</md-option>
-            <md-option value="planet">Planet</md-option>
-            <md-option value="starship">Starship</md-option>
-        </md-select>
+        <select ng-model="item.list" placeholder="Please select a type" class="md-no-underline">
+            <option value="people">People</option>
+            <option value="planet">Planet</option>
+            <option value="starship">Starship</option>
+        </select>
+    </div>
+    <div>
+        <button type="button" ng-click="getItemList(item.list)">GET</button>
+    </div>
+    <div>
+
     </div>
 </div>

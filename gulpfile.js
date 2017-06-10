@@ -49,17 +49,27 @@ gulp.task('build-vendor-js', function() {
   gulp.src([
     "./node_modules/angular/angular.min.js",
     "./node_modules/angular-ui-router/release/angular-ui-router.min.js",
-    "./node_modules/underscore/underscore.min.js",
-    "./node_modules/restangular/dist/restangular.js",])
+    "./node_modules/angular-material/angular-material.min.js"])
     .on('error', console.log)
-    .pipe(concat('vendor.js'))
+    .pipe(gulp.dest("dist/lib"));
+});
+
+gulp.task('build-app-js', function() {
+  gulp.src("./app/js/*.js")
+    .on('error', console.log)
     .pipe(gulp.dest("dist/js"));
 });
 
-gulp.task('build-main-js', function() {
-  gulp.src("./app/js/main.js")
+gulp.task('build-ctrls-js', function() {
+  gulp.src("./app/controllers/*.js")
     .on('error', console.log)
-    .pipe(gulp.dest("dist/js"));
+    .pipe(gulp.dest("dist/controllers"));
+});
+
+gulp.task('build-service', function() {
+  gulp.src("./app/services/*.js")
+    .on('error', console.log)
+    .pipe(gulp.dest("dist/services"));
 });
 
 gulp.task('build-index', function() {
@@ -89,11 +99,12 @@ gulp.task('build-partials', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./dist/scss/**/*.scss', ['sass']);
-  gulp.watch('./dist/*.html', browserSync.reload);
-  gulp.watch('./dist/partials/*.html', browserSync.reload);
-  gulp.watch('./dist/templates/*.html', browserSync.reload);
-  gulp.watch('./dist/js/**/*.js', browserSync.reload);
+  gulp.watch('./app/scss/*.scss', ['sass']);
+  gulp.watch('./app/*.html', browserSync.reload);
+  gulp.watch('./app/partials/*.html', browserSync.reload);
+  gulp.watch('./app/templates/*.html', browserSync.reload);
+  gulp.watch('./app/js/*.js', browserSync.reload);
+  gulp.watch('./app/controllers/*.js', browserSync.reload);
 })
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -160,19 +171,11 @@ gulp.task('clean', function (cb) {
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
-gulp.task('default', function(callback) {
+gulp.task('all', function(callback) {
   runSequence(['clean','sass', 'vendor-css', 'build-index',
-    'build-main-js', 'build-vendor-js', 'build-template',
-    'build-partials', 'sprite', 'favicon', 'browserSync'], 'watch',
-    callback
-  )
-})
-
-gulp.task('build', function(callback) {
-  runSequence(
-    'clean',
-    'sass',
-    ['useref', 'images', 'fonts', 'favicon'],
+    'build-app-js', 'build-vendor-js', 'build-template',
+    'build-partials', 'build-ctrls-js', 'sprite', 'favicon',
+    'build-service', 'browserSync', 'watch'],
     callback
   )
 })

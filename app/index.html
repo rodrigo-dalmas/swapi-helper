@@ -26,12 +26,18 @@
 
 <!-- Website Content Goes Here -->
 <div ng-include='"templates/header.html"'></div>
-<div ng-view></div>
+<div ui-view></div>
 <div ng-include='"templates/footer.html"'></div>
 
 <!-- Vendor Angular followed by custom js-->
-<script src="js/vendor.js"></script>
-<script src="js/main.js"></script>
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-ui-router.min.js"></script>
+<script src="lib/angular-material.min.js"></script>
+<script src="js/app.js"></script>
+<script src="services/swapi.js"></script>
+<script src="controllers/about.js"></script>
+<script src="controllers/home.js"></script>
+<script src="controllers/log.js"></script>
 
 </body>
 </html>
