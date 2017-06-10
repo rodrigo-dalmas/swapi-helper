@@ -5,60 +5,34 @@ app.service('SwapiService', function($http) {
   const urlBase = "http://swapi.co/api/";
   var result = {};
   
+  function request(path) {
+    return $http.get(path)
+      .then(function(resp) {
+        result = resp;
+        return resp.data;
+      }, function error(message) {
+      console.log("Error getting data at: " + path + "/n Check the error message: " + message);
+    });
+  }
+  
   return {
     getPeople: function() {
-      $http.get(urlBase + 'people')
-        .then(function(response){
-          result = response.data;
-          return result;
-        }, function errorCallback(message) {
-          console.log("Error getting PEOPLE: " + message);
-        });
+      request(urlBase + 'people');
     },
     getPlanets: function() {
-      $http.get(urlBase + 'planets')
-        .then(function(response){
-          result = response.data;
-          return result;
-        }, function errorCallback(message) {
-          console.log("Error getting PLANETS: " + message);
-        });
+      request(urlBase + 'planets');
     },
     getStarships: function() {
-      $http.get(urlBase + 'starships')
-        .then(function(response){
-          result = response.data;
-          return result;
-        }, function errorCallback(message) {
-          console.log("Error getting STARSHIPS: " + message);
-        });
+      request(urlBase + 'starships');
     },
     getVehicles: function() {
-      $http.get(urlBase + 'vehicles')
-        .then(function(response){
-          result = response.data;
-          return result;
-        }, function errorCallback(message) {
-          console.log("Error getting VEHICLES: " + message);
-        });
+      request(urlBase + 'vehicles');
     },
     getFilms: function() {
-      $http.get(urlBase + 'films')
-        .then(function(response){
-          result = response.data;
-          return result;
-        }, function errorCallback(message) {
-          console.log("Error getting FILMS: " + message);
-        });
+      request(urlBase + 'films');
     },
     getSpecies: function() {
-      $http.get(urlBase + 'species')
-        .then(function (response) {
-          result = response.data;
-          return result;
-        }, function errorCallback(message) {
-          console.log("Error getting SPECIES: " + message);
-        });
+      request(urlBase + 'species');
     },
   };
 });
