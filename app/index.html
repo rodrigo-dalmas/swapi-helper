@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="swapiWebApp">
+<html ng-app="swapiApp">
 <head xmlns="http://www.w3.org/1999/html">
     <!-- Meta-Information -->
     <title>Swapi Web Page</title>
@@ -23,7 +23,7 @@
 
 </head>
 <body>
-
+<img src="../todo-sprite.png">
 <!-- Website Content Goes Here -->
 <div ng-include='"templates/header.html"'></div>
 <div ui-view></div>
@@ -34,10 +34,9 @@
 <script src="lib/angular-ui-router.min.js"></script>
 <script src="lib/angular-material.min.js"></script>
 <script src="js/app.js"></script>
+<script src="constants/endpoints.js"></script>
 <script src="services/swapi.js"></script>
-<script src="controllers/about.js"></script>
 <script src="controllers/home.js"></script>
-<script src="controllers/log.js"></script>
 
 </body>
 </html>

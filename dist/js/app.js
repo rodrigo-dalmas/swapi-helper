@@ -1,21 +1,20 @@
-var swapiWebApp = angular.module('swapiWebApp', ['ui.router']);
+var swapiApp = angular.module('swapiApp', ['ui.router']);
 
-swapiWebApp.config(function($stateProvider) {
+swapiApp.config(function($stateProvider) {
   $stateProvider
     .state('home', {
       url: '',
       templateUrl: "partials/home.html",
       controller: "home",
+      resolve: {
+        'ResourceList': function (SwapiService) {
+          return SwapiService.promise;
+        }
+      }
     })
     .state('about', {
       url: '/about',
       templateUrl: "partials/about.html",
-      controller: "about",
-    })
-    .state('log', {
-      url: '/log',
-      templateUrl: "partials/log.html",
-      controller: "log",
     })
     .state('404', {
       url: '/404',

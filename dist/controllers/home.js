@@ -1,27 +1,26 @@
-var app = angular.module('swapiWebApp');
+var app = angular.module('swapiApp');
 
 app.controller('home', function($scope, SwapiService) {
+  $scope.uriList = SwapiService.getResourcesAsync();
   
-  $scope.getItemList = function(item) {
-    switch(item) {
-      case 'people':
-        SwapiService.getPeople();
-        break;
-      case 'films':
-        SwapiService.getFilms();
-        break;
-      case 'planets':
-        SwapiService.getPlanets();
-        break;
-      case 'starships':
-        SwapiService.getStarships();
-        break;
-      case 'species':
-        SwapiService.getSpecies();
-        break;
-      case 'vehicles':
-        SwapiService.getVehicles();
-        break;
+  var uriArray = Object.values($scope.uriList);
+  $scope.resourceList = uriArray.map(function(elem) {
+    return elem.substr(0, elem.length - 1).split('/').pop();
+  });
+
+  $scope.data;
+  
+  $scope.getData = function(resource, id) {
+    if (angular.isDefined(id) && id !== "") {
+      SwapiService.getSpecificData(resource, id).then(function (resp) {
+        $scope.data = resp;
+      });
+    } else {
+      SwapiService.getData(resource).then(function (resp) {
+        $scope.data = resp;
+      });
     }
-  }
+  };
+  
+  $scope.id = undefined;
 });

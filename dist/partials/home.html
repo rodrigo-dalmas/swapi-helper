@@ -1,19 +1,46 @@
-<div id="swapiPage" ng-controller="home" class="base-margin col-xs-12 col-sm-12 col-md-12 col-lg-12'">
-    <div class="row">
-        <h1>Hello and welcome to the Swapi Helper!</h1>
-        <h2>Please use the page below to select between people, planets or starships from Star War movies! </h2>
-    </div>
-    <div id="typeCombo" class="row">
-        <select ng-model="item.list" placeholder="Please select a type" class="md-no-underline">
-            <option value="people">People</option>
-            <option value="planet">Planet</option>
-            <option value="starship">Starship</option>
-        </select>
-    </div>
-    <div>
-        <button type="button" ng-click="getItemList(item.list)">GET</button>
-    </div>
-    <div>
-
+<div id="swapiPage" ng-controller="home" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="row center-xs center-sm center-md center-lg">
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+            <div class="page-header full-width">
+                <h1> Swapi Demo Page! </h1>
+            </div>
+            <h2> Please use the buttons below to get data from people, planets, starships and more of all Star War movies! </h2>
+            <div class="row center-xs center-sm center-md center-lg">
+                <md-card class="col-xs-3 col-sm-3 col-md-3 col-lg-3 between-xs between-sm between-md between-lg"
+                    ng-repeat="uri in uriList track by $index">
+                    <md-card-title class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="row center-xs center-sm center-md center-lg">
+                                <span>{{ resourceList[$index] }}</span>
+                            </div>
+                            <div class="row center-xs center-sm center-md center-lg">
+                                <span> {{ uri }} </span>
+                                <input ng-model="id" type="text" name="search" class="full-width" id="id-{{ resourceList[$index] }}"
+                                    placeholder="Type the ID to get specific data...">
+                            </div>
+                        </div>
+                    </md-card-title>
+                    <md-card-content class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="row center-xs center-sm center-md center-lg">
+                                <button id="get-{{ resourceList[$index] }}" type="button" ng-click="getData(uri, id)">GET</button>
+                            </div>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </div>
+            <div class="row center-xs center-sm center-md center-lg">
+                <md-card class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <md-card-title class="center-xs center-sm center-md center-lg">
+                        <div class="row">
+                            <h3> Here the results of the search will be displayed. Check it out! </h3>
+                        </div>
+                    </md-card-title>
+                    <md-card-content class="start-xs start-sm start-md start-lg">
+                        <pre> {{ data | json }} </pre>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </div>
     </div>
 </div>

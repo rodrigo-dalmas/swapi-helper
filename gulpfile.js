@@ -72,6 +72,12 @@ gulp.task('build-service', function() {
     .pipe(gulp.dest("dist/services"));
 });
 
+gulp.task('build-constants', function() {
+  gulp.src("./app/constants/*.js")
+    .on('error', console.log)
+    .pipe(gulp.dest("dist/constants"));
+});
+
 gulp.task('build-index', function() {
   gulp.src(["./app/index.html"])
     .on('error', console.log)
@@ -146,19 +152,12 @@ gulp.task('sprite', function () {
   spriteData.img.pipe(gulp.dest('./dist'))
 });
 
-//Copying favicon
 gulp.task('favicon', function() {
   return gulp.src('*.ico')
     .pipe(gulp.dest('./dist'))
 })
 
-// Copying fonts 
-gulp.task('fonts', function() {
-  return gulp.src('./app/fonts/**/*')
-    .pipe(gulp.dest('./dist/fonts'))
-})
-
-// Cleaning 
+// Clean task
 gulp.task('clean', function (cb) {
   del([
     'dist/*'
@@ -175,7 +174,7 @@ gulp.task('all', function(callback) {
   runSequence(['clean','sass', 'vendor-css', 'build-index',
     'build-app-js', 'build-vendor-js', 'build-template',
     'build-partials', 'build-ctrls-js', 'sprite', 'favicon',
-    'build-service', 'browserSync', 'watch'],
+    'build-constants', 'build-service', 'browserSync', 'watch'],
     callback
   )
 })
