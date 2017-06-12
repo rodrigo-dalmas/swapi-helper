@@ -127,3 +127,35 @@ $scope.uriList = SwapiService.getResourcesAsync();
 * `getData(url)` get data from the given URL
 * `getSpecificData(url, id)` get specific data from the given URL
 
+About the demo page:
+
+### MWM Framework
+* Angular (https://angularjs.org/)
+
+`WHY?`
+* Performance, organization, great echosystem, quick to develop.
+
+### Front End
+* It was used FlexBoxGrid (http://flexboxgrid.com/) and Bootstrap (for the top bar only - css) to build the front end.
+
+`WHY?`
+* Flexboxgrid provides a subset of classes that transform your page and add superb compatibility for each viewport.
+* Bootstrap can be used, as well as flexboxgrid, to responsiveness and to get components ready. In this case, it was used to get the topbar, which has a great design by the way.
+
+### Directory organization
+The approach of the directory organization was to separate controllers, directives, templates and so on, to allow the project to grow up.
+
+- App
+    -> controllers
+    -> directives
+    -> js
+    -> partials
+    -> templates
+    -> src (images)
+    -> test
+
+### Task runner
+* Gulp (http://gulpjs.com/)
+
+`WHY?`
+* Gulp is the best way to automate and generate minified files, sprites, css and put all of this in a dist folder. It helps A LOT!
