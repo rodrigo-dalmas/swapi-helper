@@ -48,6 +48,14 @@ For more information on how to use the service, please refer to the demo project
 
 downloading directly the [minified version](https://github.azc.ext.hp.com/rodrigo-dalmas/swapi-helper/blob/master/dist/services/swapi.min.js).
 
+## Demo Web App
+
+* download the zip project
+* start the terminal
+* type `gulp all` and wait the browser to be open
+* ENJOY!
+* ps.: don't miss the ABOUT page. :)
+
 ## Service API
 
 Every resource exposed by **swapi.com** has 3 methods are available:
