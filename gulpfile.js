@@ -104,6 +104,16 @@ gulp.task('build-partials', function() {
     .pipe(gulp.dest("./dist/partials"));
 });
 
+gulp.task('gen-service-min-vers', function (cb) {
+  pump([
+      gulp.src('services/*.js'),
+      uglify(),
+      gulp.dest('dist/services/swapi.min.js')
+    ],
+    cb
+  );
+});
+
 gulp.task('watch', function() {
   gulp.watch('./app/scss/*.scss', ['sass']);
   gulp.watch('./app/*.html', browserSync.reload);
@@ -174,7 +184,8 @@ gulp.task('all', function(callback) {
   runSequence(['clean','sass', 'vendor-css', 'build-index',
     'build-app-js', 'build-vendor-js', 'build-template',
     'build-partials', 'build-ctrls-js', 'sprite', 'favicon',
-    'build-constants', 'build-service', 'browserSync', 'watch'],
+    'build-constants', 'build-service', 'browserSync',
+    'gen-service-min-vers', 'watch'],
     callback
   )
 })
