@@ -145,6 +145,7 @@ About the demo page:
 ### Directory organization
 The approach of the directory organization was to separate controllers, directives, templates and so on, to allow the project to grow up.
 
+```javascript
 - App
     -> controllers
     -> directives
@@ -153,6 +154,7 @@ The approach of the directory organization was to separate controllers, directiv
     -> templates
     -> src (images)
     -> test
+```
 
 ### Task runner
 * Gulp (http://gulpjs.com/)
