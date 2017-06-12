@@ -42,6 +42,8 @@ Inside your view template:
 </ul>
 ```
 
+For more information on how to use the service, please refer to the demo project (angular) to check out how it was fully implemented.
+
 ## Installation
 
 downloading directly the [minified version](https://github.azc.ext.hp.com/rodrigo-dalmas/swapi-helper/blob/master/dist/services/swapi.min.js).
@@ -97,6 +99,31 @@ Complete API, all methods return a promise.
 * `getUrlBase` return just the base URL of the Swapi base
 * `getResources()` return the available REST resources
 * `getResourcesAsync()` load all available REST resources async (please see instructions below)
+
+In your javascript:
+
+```javascript
+// include the 'resolve' option like this
+$stateProvider
+    .state('home', {
+      url: '',
+      templateUrl: "partials/home.html",
+      controller: "home",
+      resolve: {
+        'ResourceList': function (SwapiService) {
+          return SwapiService.promise;
+        }
+      }
+    })
+```
+
+In your controller:
+
+//just use the method provided by the service, assigning the list to a variable on scope
+```javascript
+$scope.uriList = SwapiService.getResourcesAsync();
+```
+
 * `getData(url)` get data from the given URL
 * `getSpecificData(url, id)` get specific data from the given URL
 
