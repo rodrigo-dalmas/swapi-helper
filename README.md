@@ -5,7 +5,7 @@ The service is promise oriented at most and get data from [swapi.co](http://swap
 
 The `swapi` service comes with one angular constant `endpoints`, used internally and exposed by the main service `swapi`.
 
-To use the service just download the `swapi.js` file and import the service in your AngularJS controller.
+To use the service just download the (https://github.azc.ext.hp.com/rodrigo-dalmas/swapi-helper/blob/master/dist/services/swapi.min.js) file and import the service in your AngularJS controller.
 
 In your javascript:
 
