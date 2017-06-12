@@ -1,0 +1,130 @@
+//Body style
+html, body {
+  height: 100%;
+}
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  background-color: #551A8B;
+  color: white;
+  img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    filter: blur(7px);
+  }
+}
+
+//Top bar style
+#top-bar {
+  background-color: #6224a0;
+  a {
+    color: white;
+  }
+  li > a:hover, li > a:focus {
+    background-color: #7e54a5;
+  }
+}
+
+// Common classes
+.full-width {
+  width: 100%;
+}
+
+// Card style
+md-card {
+  background-color: #dcd0e8;
+  border-radius: 5px;
+  margin: 30px;
+  md-card-title {
+    span, h3 {
+      color: black;
+    }
+    span {
+      font-size: 20px;
+    }
+    input {
+      color: black;
+    }
+  }
+  md-card-content {
+    button {
+      color: black;
+    }
+  }
+  button {
+    height: 35px;
+    width: 75px;
+    font-size: 16px;
+  }
+}
+
+// Footer style
+#footer {
+  a {
+    color: white;
+    font-size: 24px;
+  }
+}
+
+//Start Wars text
+#about {
+  background-color: black;
+  overflow: hidden;
+}
+
+.fade {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  top: -25px;
+  background-image: linear-gradient(0deg, transparent, black 75%);
+  z-index: 1;
+}
+
+.star-wars {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 800px;
+  color: #feda4a;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 700%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+  perspective: 400px;
+  text-align: justify;
+}
+
+.crawl {
+  position: relative;
+  top: 99999px;
+  transform-origin: 50% 100%;
+  animation: crawl 60s linear;
+}
+
+.crawl > .title {
+  font-size: 100%;
+  text-align: center;
+}
+
+.crawl > .title h1 {
+  margin: 0 0 100px;
+  text-transform: uppercase;
+}
+
+@keyframes crawl {
+  0% {
+    top: -10px;
+    transform: rotateX(20deg)  translateZ(0);
+  }
+  100% {
+    top: -7000px;
+    transform: rotateX(25deg) translateZ(-2500px);
+  }
+}

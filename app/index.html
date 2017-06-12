@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="swapiApp">
+<head xmlns="http://www.w3.org/1999/html">
+    <!-- Meta-Information -->
+    <title>Swapi Web Page</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Swapi Web Page">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+
+    <!-- Vendor Bootstrap Stylesheets -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Our Website CSS Styles -->
+    <link rel="stylesheet" href="css/angular-material.min.css">
+    <link rel="stylesheet" href="css/flexboxgrid.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+<img src="../todo-sprite.png">
+<!-- Website Content Goes Here -->
+<div ng-include='"templates/header.html"'></div>
+<div ui-view></div>
+<div ng-include='"templates/footer.html"'></div>
+
+<!-- Vendor Angular followed by custom js-->
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-ui-router.min.js"></script>
+<script src="lib/angular-material.min.js"></script>
+<script src="js/app.js"></script>
+<script src="constants/endpoints.js"></script>
+<script src="services/swapi.js"></script>
+<script src="controllers/home.js"></script>
+
+</body>
+</html>
